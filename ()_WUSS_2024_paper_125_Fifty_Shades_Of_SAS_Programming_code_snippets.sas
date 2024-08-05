@@ -1265,7 +1265,31 @@ data WORK.RESULT31;
   where symexist(cats("_31_&uniqueMarker._",ID));
 run;
 
+/*
+data WORK.eXclude_RESULT31_1A;
+  set WORK.BIG;
+  where symget(cats("_31_&uniqueMarker._",ID)) is not null;
+run;
 
+data WORK.eXclude_RESULT31_1B;
+  set WORK.BIG;
+  if NOT (symget(cats("_31_&uniqueMarker._",ID)) = " ");
+run;
+
+filename f31 DUMMY;
+proc printto log=f31;
+run;
+data WORK.eXclude_RESULT31_2;
+  set WORK.BIG;
+  where resolve(cats('&',"_31_&uniqueMarker._",ID)) = "I am here";
+run;
+proc printto;
+run;
+filename f31 clear;
+
+proc print data=WORK.eXclude_RESULT31_2(obs=47);
+run;
+*/
 
 
 
