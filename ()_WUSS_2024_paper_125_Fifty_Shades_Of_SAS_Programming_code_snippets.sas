@@ -166,7 +166,7 @@ data WORK.RESULT2;
   set WORK.BIG;
   WHERE id in (1 2 3 6 13 17 42 101 303 555 9999);
 
-  /* set WORK.BIG(WHERE=( id in (...) )); */
+  /* set WORK.BIG(WHERE=( id in (...) )); <- data set option */
 run;
 proc print;
 run;
@@ -238,7 +238,7 @@ proc print;
 run;
 
 
-/* look-up 6, obvious way, MERGE */
+/* look-up 6, the SAS way, MERGE */
 data WORK.RESULT6;
   MERGE 
     WORK.BIG(in=B) 
