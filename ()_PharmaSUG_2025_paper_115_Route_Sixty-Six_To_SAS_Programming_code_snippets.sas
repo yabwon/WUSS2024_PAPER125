@@ -2058,7 +2058,7 @@ proc cas;
     describe RESULT45;
   
     a={};
-    do r over s; /* loop to put data from s to an array s */
+    do r over s; /* loop to put data from s to an array a */
       print ">s>" r.ids;
       a = a + {r.ids};
     end;
