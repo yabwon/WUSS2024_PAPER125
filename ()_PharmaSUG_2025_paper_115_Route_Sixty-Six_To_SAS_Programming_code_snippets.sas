@@ -1,4 +1,4 @@
-
+﻿
 /***************************************************************************************************\
                                                                                                      
                                    WUSS 2024, Paper 125
@@ -1772,6 +1772,8 @@ proc casutil;
   list tables;
 run;
 
+cas casauto listhistory _all_;
+
 data caswork.RESULT38;
   merge caswork.BIG(in=B) caswork.small(in=S rename=(ids=id));
   by id;
@@ -1780,6 +1782,9 @@ data caswork.RESULT38;
 
   t = _THREADID_;
 run;
+
+cas casauto listhistory _all_;
+
 proc print data=caswork.RESULT38;
 run;
 
