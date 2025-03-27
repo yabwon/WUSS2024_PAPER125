@@ -1,4 +1,4 @@
-﻿
+
 /***************************************************************************************************\
                                                                                                      
                                    WUSS 2024, Paper 125
@@ -1704,12 +1704,12 @@ run;
   %do;
     if (&var. < &v.) then 
       do;
-        %binSrch(&var.,%do j=&l. %to %eval(&i-1); %scan(&list.,&j.,%str( ))  %end;)
+        %binSrch(&var.,%do j=&l. %to %eval(&i-1); %scan(&list.,&j.,%str( ))  %end;,sep=&sep.)
       end;
     else if (&var. = &v.) then return&sep.(1);
     else if (&var. > &v.) then 
       do;
-        %binSrch(&var.,%do j=%eval(&i+1) %to &h.; %scan(&list.,&j.,%str( ))  %end;)
+        %binSrch(&var.,%do j=%eval(&i+1) %to &h.; %scan(&list.,&j.,%str( ))  %end;,sep=&sep.)
       end;
   %end;
 %mend binarySearch;
