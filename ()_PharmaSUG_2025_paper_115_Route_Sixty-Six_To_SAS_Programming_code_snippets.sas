@@ -1427,6 +1427,37 @@ proc print data=RESULT33;
 run;
 
 
+/* If you are working on Viya you can use PROC PYTHON! */
+
+/*
+
+PROC PYTHON;
+SUBMIT;
+import pandas
+
+smalldf = SAS.sd2df("work.small")
+BIGdf   = SAS.sd2df("work.BIG")
+print(smalldf)
+print(BIGdf.head(5))
+
+RESULT33B = BIGdf.merge(smalldf, left_on="id", right_on="ids", how="inner")
+
+SAS.df2sd(RESULT33B, "WORK.RESULT33B(drop=ids)",
+          outfmts={"date":"yymmdd10.","value":"DOLLAR10.2"},
+          datetimes={"date":"date"}
+          )
+ENDSUBMIT;
+QUIT;
+
+proc print data=WORK.RESULT33B;
+run;
+
+*/
+
+
+
+
+
 
 
 /* look-up 34, "foreign languages" - LUA */
@@ -1755,7 +1786,7 @@ run;
 
 
 
-/* Viya & CAS - Versalite Introducing Yet Another Computationally Advanced System   */
+/* Viya & CAS - Versatile Ingenious Yet Another Computationally Advanced System   */
 
 /* cas CASAUTO terminate; */ /* run to kill CAS session */
 
@@ -2036,7 +2067,7 @@ proc cas;
     /*print snr Bnr;*/
   
     table.fetch result=s /  /* fetch data */
-      table=small
+      table=small,
       maxRows=snr,
       from=1,
       to=snr,
